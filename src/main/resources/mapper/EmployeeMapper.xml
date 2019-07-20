@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cy.pj.dao.EmployeeDao">
+
+
+	<!--添加应聘人信息 -->
+	<insert id="insertEmployee">
+		insert into tb_employee
+		(id,em_serialNumber,em_name,em_sex,em_age,em_IDCard,em_born,em_nation,em_marriage,em_visage,em_ancestralHome,em_tel,em_address,
+		em_afterSchool,em_speciality,em_culture,em_startime,em_departmentId,em_typeWork,em_creatime,em_createName,em_bz)
+		values
+		(#{id},#{emSerialNumber},#{emName},#{emSex},#{emAge},#{emIDCard},#{emBorn},#{emNation},#{emMarriage},#{emVisage},#{emAncestralHome},
+		#{emTel},#{emAddress},#{emAfterSchool},#{emSpeciality},#{emCulture},#{emStartime},#{emDepartmentId},#{emTypeWork},#{emCreatime},
+		#{emCreateName},#{emBz})
+	</insert>
+
+	<!-- 员工管理中查询员工信息 -->
+	<select id="findPageObjects" resultType=" com.cy.pj.common.vo.PageEmployee">
+		select em_serialNumber 员工编号 ,em_name 姓名,em_sex 性别,dt_name 部门,em_typeWork 工种,em_culture 学历,em_startime 参加工作时间
+		from tb_employee emp,tb_department dt 
+		where emp.em_departmentId=dt.id	and dt.id=9
+	</select>
+
+
+	
+
+</mapper>
